@@ -1,11 +1,62 @@
 import React, { useState } from 'react';
 import getThemeClasses from '../Shared/UiTheme';
+import { Handshake } from '@mui/icons-material';
+import { ChangeCircle } from '@mui/icons-material';
+import ReactFlagsSelect from "react-flags-select";
 
 interface CreatorsCornerProps {
   darkMode: boolean;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+const niches = [
+  { name: '-- Select Niche --' },
+  { name: 'Education' },
+  { name: 'Entertainment' },
+  { name: 'Lifestyle' },
+  { name: 'Food & Cooking' },
+  { name: 'Business & Finance' },
+  { name: 'Art & Creativity' },
+  { name: 'Music' },
+  { name: 'Hobbies & Recreation' },
+  { name: 'Family & Relationships' },
+  { name: 'Pets & Animals' }
+]
+
 const CreatorsCorner: React.FC<CreatorsCornerProps> = ({ darkMode }) => {
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [showSecondSelect, setShowSecondSelect] = useState(false);
+  const [showPeopleList, setShowPeopleList] = useState([]);
+  const handleCountrySelect = (code) => {
+    setSelectedCountry(code);
+    setShowSecondSelect(true); // Show the second select box when a country is selected
+  };
+
+  const mockPeopleList = [
+    { name: 'John Doe', email: 'john@example.com' },
+    { name: 'Jane Smith', email: 'jane@example.com' },
+    { name: 'Alice Johnson', email: 'alice@example.com' },
+  ];
+
+
+
+
+
+
+
+
+
   const [selectedOption, setSelectedOption] = useState<'MeetAndCollaborate' | 'Marketplace' | null>(null);
 
   const uiTheme = getThemeClasses(darkMode);
@@ -18,46 +69,54 @@ const CreatorsCorner: React.FC<CreatorsCornerProps> = ({ darkMode }) => {
     // Meet & Collaborate page content
     return (
       <div
-        className={`flex flex-1 flex-col items-center justify-center min-h-screen px-4 lg:mr-[320px] m-2 ${
-          darkMode ? 'bg-[#0A1739] text-white' : 'bg-gray-50 text-black'
-        }`}
+        className={`flex flex-1 flex-col items-center justify-center min-h-screen px-4 lg:mr-[320px] m-2 ${darkMode ? 'bg-[#0A1739] text-white' : 'bg-gray-50 text-black'
+          }`}
       >
+        <div>
+
+        </div>
         <h1 className={`text-2xl font-bold mb-4 text-center ${darkMode ? uiTheme.darkUI : uiTheme.lightUI}`}>
           Meet & Collaborate
         </h1>
-        {/* Content from the Meet & Collaborate page */}
-        <div className="mb-6">
-          <input
-            type="text"
-            placeholder="Search by Country"
-            className={`p-2 rounded-md mr-2 ${
-              darkMode ? uiTheme.container : uiTheme.activeButton
-            }`}
+        <div className='flex flex-col gap-4'>
+          <ReactFlagsSelect
+            selected={selectedCountry}
+            onSelect={handleCountrySelect}
           />
-          <input
-            type="text"
-            placeholder="Search by Niche/Keyword"
-            className={`p-2 rounded-md ${
-              darkMode ? 'bg-gray-800 text-white' : 'bg-white text-black border'
-            }`}
-          />
-          <button className={`ml-2 p-2 rounded-md `}>Search</button>
+          {
+            showSecondSelect && (
+              <select className='focus:outline-none border border-slate-300 px-3 py-2 rounded-md'>
+                {
+                  niches.map((niche) => (
+                    <option key={niche.name} value={niche.name}>
+                      {niche.name}
+                    </option>
+                  ))
+                }
+                <option value="">Choose</option>
+              </select>
+            )
+          }
         </div>
-        <div className="w-full max-w-4xl">
-          {/* Example creators list */}
-          <div
-            className={`flex justify-between items-center p-4 rounded-md mb-3 ${
-              darkMode ? 'bg-gray-800' : 'bg-white border shadow-sm'
-            }`}
-          >
-            <div>
-              <h2 className="text-lg font-bold">Jane Doe</h2>
-              <p>Country: USA</p>
-              <p>Niche: Travel</p>
-            </div>
-            <button className={`p-2 rounded-md `}>Send Invitation</button>
+        
+        <div className='w-[50%] flex flex-col divide-y-2 divide-slate-100'>
+          <div className='flex justify-between py-2 px-2 cursor-pointer hover:bg-slate-200'>
+            <h1>Name here</h1><button className='text-sm text-slate-500'>Send Invite</button>
+          </div>
+          <div className='flex justify-between py-2 px-2 cursor-pointer hover:bg-slate-200'>
+            <h1>Name here</h1><button className='text-sm text-slate-500'>Send Invite</button>
+          </div>
+          <div className='flex justify-between py-2 px-2 cursor-pointer hover:bg-slate-200'>
+            <h1>Name here</h1><button className='text-sm text-slate-500'>Send Invite</button>
+          </div>
+          <div className='flex justify-between py-2 px-2 cursor-pointer hover:bg-slate-200'>
+            <h1>Name here</h1><button className='text-sm text-slate-500'>Send Invite</button>
+          </div>
+          <div className='flex justify-between py-2 px-2 cursor-pointer hover:bg-slate-200'>
+            <h1>Name here</h1><button className='text-sm text-slate-500'>Send Invite</button>
           </div>
         </div>
+
       </div>
     );
   }
@@ -66,9 +125,8 @@ const CreatorsCorner: React.FC<CreatorsCornerProps> = ({ darkMode }) => {
     // Marketplace page placeholder
     return (
       <div
-        className={`flex flex-1 flex-col items-center justify-center min-h-screen px-4 lg:mr-[320px] m-2 ${
-          darkMode ? 'bg-[#0A1739] text-white' : 'bg-gray-50 text-black'
-        }`}
+        className={`flex flex-1 flex-col items-center justify-center min-h-screen px-4 lg:mr-[320px] m-2 ${darkMode ? 'bg-[#0A1739] text-white' : 'bg-gray-50 text-black'
+          }`}
       >
         <h1 className={`text-2xl font-bold mb-4 text-center ${darkMode ? 'text-white' : 'text-black'}`}>
           Marketplace Coming Soon
@@ -80,26 +138,35 @@ const CreatorsCorner: React.FC<CreatorsCornerProps> = ({ darkMode }) => {
   // Initial page with options
   return (
     <div
-      className={`flex flex-1 flex-col items-center justify-center min-h-screen px-4 lg:mr-[320px] m-2 ${
-        darkMode ? 'bg-[#0A1739] text-white' : 'bg-gray-50 text-black'
-      }`}
+      className={`flex flex-1 flex-col items-center justify-center min-h-screen px-4 lg:mr-[320px] m-2 ${darkMode ? 'bg-[#0A1739] text-white' : 'bg-gray-50 text-black'
+        }`}
     >
       <h1 className={`text-3xl font-bold mb-8 mt-[-280px] text-center ${darkMode ? 'text-white' : 'text-black'}`}>
         Creators Corner
       </h1>
       <div className="flex space-x-4">
-        <button
-          onClick={() => handleOptionClick('MeetAndCollaborate')}
-          className={`p-4 rounded-lg text-lg font-semibold `}
-        >
-          Meet & Collaborate
-        </button>
-        <button
-          onClick={() => handleOptionClick('Marketplace')}
-          className={`p-4 rounded-lg text-lg font-semibold `}
-        >
-          Marketplace
-        </button>
+
+        <div className='border flex-1 border-slate-500 px-4 py-2 rounded-lg flex flex-col justify-center items-center cursor-pointer' onClick={() => handleOptionClick('MeetAndCollaborate')}>
+          <Handshake sx={{ fontSize: 50 }} />
+          <button
+
+            className={`p-4 rounded-lg text-lg font-semibold `}
+          >
+            Meet & Collaborate
+          </button>
+        </div>
+
+
+        <div className='border border-slate-500 flex-1 px-4 py-2 rounded-lg flex flex-col justify-center items-center cursor-pointer' onClick={() => handleOptionClick('Marketplace')}>
+          <ChangeCircle sx={{ fontSize: 50 }} />
+          <button
+
+            className={`p-4 rounded-lg text-lg font-semibold `}
+          >
+            Marketplace
+          </button>
+        </div>
+
       </div>
     </div>
   );
