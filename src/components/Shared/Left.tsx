@@ -11,6 +11,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import CloseIcon from "@mui/icons-material/Close";
 import { Tooltip, Switch, IconButton } from "@mui/material";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Handshake } from "@mui/icons-material";
 import { gsap } from "gsap";
 
 interface SidebarProps {
@@ -77,9 +78,11 @@ const Sidebar: React.FC<SidebarProps> = ({ darkMode, toggleDarkMode, isExpanded,
     { name: "Goals", icon: <FlagIcon />, path: "/Dashboard/Goals" },
     { name: "Learn", icon: <SchoolIcon />, path: "/Dashboard/learn" },
     { name: "AI Coach", icon: <TipsAndUpdatesIcon />, path: "/Dashboard/Ai-Coach" },
+    {name: "creators_corner", icon: <Handshake />, path: "/Dashboard/creators_corner"},  
     { name: "Notifications", icon: <NotificationsIcon />, path: "/Dashboard/notifications" },
     { name: "Settings", icon: <SettingsIcon />, path: "/Dashboard/settings" },
-    { name: "home_dashboard", icon: <SettingsIcon />, path: "/Dashboard/home_dashboard" },
+
+  
     
   ];
 

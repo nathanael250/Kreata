@@ -16,7 +16,7 @@ import ReferenceChannels from './ReferenceChannel';
 import Settings from './Settings';
 import Goals from './Goals';
 import Notifications from './Notifications';
-
+import CreatorsCorner from './CreatorsCorner';
 import getThemeClasses from '../Shared/UiTheme';
 
 
@@ -122,6 +122,7 @@ const Dashboard: React.FC = () => {
                                 element={<Notifications darkMode={darkMode} />}
                             />
                             <Route path="AI-Coach" element={<AiCoach darkMode={darkMode} />} />
+                            <Route path='creators_corner' element={<CreatorsCorner darkMode={darkMode} />} />
                             <Route path="channels" element={<Credits darkMode={darkMode} />} />
                             <Route path='settings/profilePage' element={<ProfilePage darkMode={darkMode}/>} />
                             <Route path='settings/manage_Channels' element={<ManageChannels darkMode={darkMode}/>} />

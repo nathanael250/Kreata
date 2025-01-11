@@ -17,7 +17,7 @@ import Goals from "./components/Dashboard/Goals";
 import ReferenceChannels from "./components/Dashboard/ReferenceChannel";
 import Choose from "./components/Choose";
 import ProfilePage from "./components/Dashboard/ProfilePage";
-import HomeDashboard from "./components/Dashboard/HomeDashboard";
+import CreatorsCorner from "./components/Dashboard/CreatorsCorner";
 
 const App: React.FC = () => {
   const [isPlanVisible, setIsPlanVisible] = useState(false);
@@ -77,10 +77,11 @@ const App: React.FC = () => {
           <Route path="goals" element={<Goals darkMode={darkMode} />} />
           <Route path='insights' element={<ContentCreatorsDashboard darkMode={darkMode} />} />
           <Route path="AI-Coach" element={<AiCoach darkMode={darkMode} />} />
+          <Route path="creators_corner" element={<CreatorsCorner darkMode={darkMode} />} />
           <Route path="channels" element={<Credits darkMode={darkMode} />} />
           <Route path='settings/profilePage' element={<ProfilePage darkMode={darkMode}/>} />
           <Route path="settings" element={<Settings proChannel={proChannel} setProChannel={setProChannel} darkMode={darkMode} toggleDarkMode={toggleDarkMode} />} />
-          <Route path="home_dashboard" element={<HomeDashboard/>}/>
+          
         </Route>
 
 
